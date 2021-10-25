@@ -9,8 +9,8 @@ app.use(cors()); // To handle cross-origin requests
 app.use(express.json()); // To parse JSON bodies
 
 const credentials = {
-	clientId: 'd8bcd2d5ae0c44a6a5d24f3c22a0eed1',
-	clientSecret: 'a0b372c7fb1c41e288746e68c972d0f1',
+	clientId: 'Your CLient ID',
+	clientSecret: 'Ypur Secret',
 	redirectUri: 'http://localhost:3000/'
 };
 
