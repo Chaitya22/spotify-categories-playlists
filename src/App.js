@@ -1,8 +1,10 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import axios from 'axios';
 import Dashboard from './Dashboard';
 import Login from './Login';
+import './App.css';
+import Playlist from './Playlist';
 
 function App() {
 	const code = new URLSearchParams(window.location.search).get('code');
@@ -21,7 +23,20 @@ function App() {
 		[ code ]
 	);
 
-	return <div className='App'>{accessToken !== '' ? <Dashboard accessToken={accessToken} /> : <Login />}</div>;
+	return (
+		<Router>
+			<div className='App'>{accessToken !== '' ? <Redirect to='/categories' /> : <Redirect to='/' />}</div>
+			<Switch>
+				<Route exact path='/' component={Login} />
+				<Route exact path='/categories'>
+					<Dashboard accessToken={accessToken} />
+				</Route>
+				<Route path='/categories/:id'>
+					<Playlist accesstoken={accessToken} />
+				</Route>
+			</Switch>
+		</Router>
+	);
 }
 
 export default App;

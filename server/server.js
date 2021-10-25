@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.post('/login', (req, res) => {
 	//  setup
+	console.log('Server called');
 	let spotifyApi = new spotifyWebApi(credentials);
 
 	//  Get the "code" value posted from the client-side and get the user's accessToken from the spotify api
